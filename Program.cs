@@ -63,7 +63,7 @@ public class Employee
     private string name;
     private double wage;
 
-    public Employee(string name, string id, double wage)
+    public Employee(string id, string name, double wage)
     {
         this.name = name;
         this.id = id;
@@ -79,24 +79,9 @@ public class Employee
 
 public class EPermanent : Employee
 {
-    private double contract_fee = 200000;
-
-    public EPermanent(string name, string id, double wage) : base(name, id, wage)
-    {
-
-    }
-
-    public override void CalculateWage()
-    {
-        Wage = Wage - contract_fee;
-    }
-}
-
-public class EContract : Employee
-{
     private double bonus = 500000;
 
-    public EContract (string name, string id, double wage) : base(name, id, wage)
+    public EPermanent (string id, string name, double wage) : base(id, name, wage)
     {
 
     }
@@ -107,9 +92,24 @@ public class EContract : Employee
     }
 }
 
+public class EContract : Employee
+{
+    private double contract_fee = 200000;
+
+    public EContract(string id, string name, double wage) : base(id, name, wage)
+    {
+
+    }
+
+    public override void CalculateWage()
+    {
+        Wage = Wage - contract_fee;
+    }
+}
+
 public class EIntern : Employee
 {
-    public EIntern(string name, string id, double wage) : base(name, id, wage)
+    public EIntern(string id, string name, double wage) : base(id, name, wage)
     {
 
     }
